@@ -6,35 +6,27 @@
     </head>
     <body>
     <script src="volumes.js"></script>
-      <dif>
-          <img id = "currShpe" src="images/circle.png"></img>
-          <script> 
-            let images = [
-                "circle.png",
-                "sphere.png",
-                
-                "rectangle.png",
-                "cuboid.png",
-
-                
-                "trapezoid.png",
-
-                "triangle.png",
-                "pyramid.png",
-                
-            ];
+      <dif> 
+        <img id = "currShpe" src="images/circle.png"></img>
+        <script> function next(){}; </script>
+        <button id = "a" onclick="next(-1,'a')" class = "button">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
+        <button id = "b" onclick="next(1,'b')" class = "button">  <img src="images/next.png" alt ="->"/> </button>    
+        <script>
+            let b = {"a":document.getElementById("a"),"b":document.getElementById("b")}
             let current = 0
             let img = document.getElementById("currShpe")
-            function next(n){
+            
+            var images = [ "circle.png", "sphere.png", "rectangle.png","cuboid.png", "trapezoid.png", "triangle.png", "pyramid.png",];
+            function next(n,bu){
+                
+                b[bu].style.animation-play-state = "running"
                 current = (current+n)%images.length
                 current = current < 0 ? images.length-1 : current;
                 img.setAttribute("src","images/"+images[current])
             }
 
-          </script>
-        <button onclick="next(-1)" class = "button">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
-        <button onclick="next(1)" class = "button">  <img src="images/next.png" alt ="->"/> </button>    
-       
+
+        </script>
     </dif>
     </body>
 </html>

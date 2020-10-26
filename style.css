@@ -1,6 +1,16 @@
+
+@keyframes anim {
+    0% { background-color:red;},
+    100% {background-color:blue;}
+}  
+
+
 .button {
     background-color: transparent;
     border:none;
     padding: 0px;
+    animation-name: anim;
+    animation-duration: 0.5s;
+    animation-play-state: paused;
 }
 
