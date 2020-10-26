@@ -1,4 +1,3 @@
-
 var formulas = {
     rectangle(w,h){
         return w*h
