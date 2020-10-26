@@ -6,25 +6,42 @@
     </head>
     <body>
     <script src="volumes.js"></script>
-      <dif> 
-        <img id = "currShpe" src="images/circle.png"></img>
+      <div id = "bkr"> 
+            <div id = "container" style="overflow: hidden; width: 243px; height: 137px;">
+                 <img id = "currShpe" src="images/circle.png"></img>
+            </div>
         <button id = "a" onclick="next(-1,'button1')" class = "button">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
-        <button id = "b" onclick="next(1,'button2')" class = "button">  <img src="images/next.png" alt ="->"/> </button>    
+        <button id = "b" onclick="next(1,'button2')" class = "button">  <img src="images/next.png" alt ="<-"/> </button>    
         
         <script>
             let buttons = {"button1":document.getElementById("a"),"button2":document.getElementById("b")}
             let current = 0
             let img = document.getElementById("currShpe")
 
-            var images = [ "circle.png", "sphere.png", "rectangle.png","cuboid.png", "trapezoid.png", "triangle.png", "pyramid.png",];
+            let images = [ "circle.png", "sphere.png", "rectangle.png","cuboid.png", "trapezoid.png", "triangle.png", "pyramid.png",];
+
+            let blocked = false;
+            function finish(){
+                blocked = false;
+                
+                img.setAttribute("src","images/"+images[current])
+
+                img.classList.remove("animate")
+            }
+            
             function next(n,button){
-                buttons[button].style.backgroundColor = "yellow";
+                if (!blocked) {
+                    blocked = true;
+                    let img = document.getElementById("currShpe")
+                    img.classList.add("animate");
+                        img.addEventListener("animationend",finish)
+                        
                 current = (current+n)%images.length
                 current = current < 0 ? images.length-1 : current;
-                img.setAttribute("src","images/"+images[current])
+                }
             }
 
         </script>
-    </dif>
+    </div>
     </body>
 </html>
