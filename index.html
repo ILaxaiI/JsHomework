@@ -7,40 +7,81 @@
     <body>
     <script src="volumes.js"></script>
       <div id = "bkr"> 
-            <div id = "container" style="overflow: hidden; width: 243px; height: 137px;">
-                 <img id = "currShpe" src="images/circle.png"></img>
+            <div id = "container" style=" width: 500px; height: 137px;">
+                 <img id = "img1" class = "img" src="images/circle.png"style= "z-index: 1;"></img>
+                 <img id = "img2" class = "img" src="images/rectangle.png" style= "z-index: 2; display:none;"></img>    
             </div>
-        <button id = "a" onclick="next(-1,'button1')" class = "button">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
-        <button id = "b" onclick="next(1,'button2')" class = "button">  <img src="images/next.png" alt ="<-"/> </button>    
+
+        <button id = "a" onclick="swipeLeft()" class = "button">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
+        <button id = "b" onclick="swipeRight()" class = "button">  <img src="images/next.png" alt ="<-"/> </button>    
         
         <script>
             let buttons = {"button1":document.getElementById("a"),"button2":document.getElementById("b")}
             let current = 0
-            let img = document.getElementById("currShpe")
-
-            let images = [ "circle.png", "sphere.png", "rectangle.png","cuboid.png", "trapezoid.png", "triangle.png", "pyramid.png",];
-
-            let blocked = false;
-            function finish(){
-                blocked = false;
-                
-                img.setAttribute("src","images/"+images[current])
-
-                img.classList.remove("animate")
-            }
+            let img = document.getElementById("img1")
+            let img2 = document.getElementById("img2")
+            let images = [ "circle.png", "sphere.png", "cylinder.png","rectangle.png","cuboid.png", "trapezoid.png", "pyramid.png",];
+            let swipe = [a = false,b = false]
+                 
             
-            function next(n,button){
-                if (!blocked) {
-                    blocked = true;
-                    let img = document.getElementById("currShpe")
-                    img.classList.add("animate");
-                        img.addEventListener("animationend",finish)
-                        
-                current = (current+n)%images.length
-                current = current < 0 ? images.length-1 : current;
+            function swap(){
+                if (!(swipe.a || swipe.b)){         
+                    let tmp = img
+                    img = img2
+                    img2 = tmp
                 }
             }
+            
+            function finishOut(){
+                swipe.a = false;  
+                img.classList.remove("ROut")
+                img.classList.remove("LOut")
+                img.style.display = "none"; 
+                swap()
+            }
+            function finishIn(){
+                swipe.b = false;
+                img2.classList.remove("RIn")
+                img2.classList.remove("LIn")
+                swap()
+            }
+            
+            function swipeRight(){
+                if (swipe.a || swipe.b) return;
 
+                swipe.a = true 
+                swipe.b = true
+
+                current = (current-1)%images.length
+                current = current < 0 ? images.length-1 : current;
+              
+                img.classList.add("ROut")
+                img.addEventListener("animationend",finishOut)
+               
+                img2.setAttribute("src","images/"+images[(current)%images.length])
+                img2.style.display = "block";
+                img2.classList.add("RIn")
+                img2.addEventListener("animationend",finishIn)
+                
+            }
+            function swipeLeft(){
+                if (swipe.a || swipe.b) return;         
+                
+                swipe.a = true
+                swipe.b = true
+              
+                current = (current+1)%images.length
+                current = current < 0 ? images.lenhth+1 : current;
+              
+                img.classList.add("LOut")
+                img.addEventListener("animationend",finishOut)
+                img2.setAttribute("src","images/"+images[(current)%images.length])
+                img2.style.display = "block";
+                img2.classList.add("LIn")
+                img2.addEventListener("animationend",finishIn)
+            
+            }
+        
         </script>
     </div>
     </body>

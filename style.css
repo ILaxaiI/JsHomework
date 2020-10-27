@@ -1,5 +1,5 @@
   
-@keyframes anim {
+@keyframes animR1 {
     0% { 
         transform: translateX(0px);
      filter: opacity(0.9);
@@ -10,7 +10,7 @@
     }
 }  
 
-@keyframes anim2{
+@keyframes animR2{
     0% { 
         transform: translateX(-243px);
         filter: opacity(0.0);
@@ -21,21 +21,57 @@
     }
 }
 
-.animate{
-    animation: anim;
-    animation-timing-function: ease-in;
-    animation-duration:.4s;
-    animation-iteration-count: 1;    
-    overflow: hidden;
+
+@keyframes animL1 {
+    0% { 
+        transform: translateX(0px);
+     filter: opacity(0.9);
+    }
+    100% { 
+        transform: translateX(-243px);
+        filter: opacity(0.0);
+    }
+}  
+
+@keyframes animL2{
+    0% { 
+        transform: translateX(243px);
+        filter: opacity(0.0);
+    }
+    100% { 
+        transform: translateX(0px);
+        filter: opacity(1);   
+    }
 }
 
-.animate2{
-    animation: anim2;
-    animation-timing-function: ease-in;
-    animation-duration:.4s;
+.ROut{ 
+    animation: animR1;
+    animation-duration:.1s;
     animation-iteration-count: 1;    
-    overflow: hidden;
+    animation-timing-function: ease-in;
 }
+
+.RIn{ 
+    animation: animR2;
+    animation-duration:.1s;
+    animation-iteration-count: 1;    
+    animation-timing-function: ease-in;
+}
+
+.LOut{
+    animation : animL1;
+    animation-duration:.1s;
+    animation-iteration-count: 1;    
+    animation-timing-function: ease-in;
+}
+
+.LIn {
+    animation: animL2;
+    animation-duration:.1s;
+    animation-iteration-count: 1;    
+    animation-timing-function: ease-in;
+}
+
 .button {
     
     outline:none;
@@ -44,4 +80,8 @@
     
     background-color:white;
 
+}
+
+.img {
+    position: absolute; top:__; left:__;
 }
