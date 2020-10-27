@@ -6,83 +6,20 @@
     </head>
     <body>
     <script src="volumes.js"></script>
-      <div id = "bkr"> 
-            <div id = "container" style=" width: 500px; height: 137px;">
-                 <img id = "img1" class = "img" src="images/circle.png"style= "z-index: 1;"></img>
-                 <img id = "img2" class = "img" src="images/rectangle.png" style= "z-index: 2; display:none;"></img>    
-            </div>
+      <div id = "bkr" style = "margin:auto;width: 70%;"> 
+            <div id = "container" style="position: relative; border-width: 2px; border-style: solid; border-color: black; width: 263px;    margin:auto; overflow: hidden; height: 147px;">
 
-        <button id = "a" onclick="swipeLeft()" class = "button">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
-        <button id = "b" onclick="swipeRight()" class = "button">  <img src="images/next.png" alt ="<-"/> </button>    
-        
-        <script>
-            let buttons = {"button1":document.getElementById("a"),"button2":document.getElementById("b")}
-            let current = 0
-            let img = document.getElementById("img1")
-            let img2 = document.getElementById("img2")
-            let images = [ "circle.png", "sphere.png", "cylinder.png","rectangle.png","cuboid.png", "trapezoid.png", "pyramid.png",];
-            let swipe = [a = false,b = false]
+                <img id = "img1" class = "img" src="images/circle.png" style= "z-index: 1;"></img>
+                <img id = "img2" class = "img" src="images/rectangle.png" style= "z-index: 2; display:none;"></img>    
                  
-            
-            function swap(){
-                if (!(swipe.a || swipe.b)){         
-                    let tmp = img
-                    img = img2
-                    img2 = tmp
-                }
-            }
-            
-            function finishOut(){
-                swipe.a = false;  
-                img.classList.remove("ROut")
-                img.classList.remove("LOut")
-                img.style.display = "none"; 
-                swap()
-            }
-            function finishIn(){
-                swipe.b = false;
-                img2.classList.remove("RIn")
-                img2.classList.remove("LIn")
-                swap()
-            }
-            
-            function swipeRight(){
-                if (swipe.a || swipe.b) return;
-
-                swipe.a = true 
-                swipe.b = true
-
-                current = (current-1)%images.length
-                current = current < 0 ? images.length-1 : current;
-              
-                img.classList.add("ROut")
-                img.addEventListener("animationend",finishOut)
-               
-                img2.setAttribute("src","images/"+images[(current)%images.length])
-                img2.style.display = "block";
-                img2.classList.add("RIn")
-                img2.addEventListener("animationend",finishIn)
-                
-            }
-            function swipeLeft(){
-                if (swipe.a || swipe.b) return;         
-                
-                swipe.a = true
-                swipe.b = true
-              
-                current = (current+1)%images.length
-                current = current < 0 ? images.lenhth+1 : current;
-              
-                img.classList.add("LOut")
-                img.addEventListener("animationend",finishOut)
-                img2.setAttribute("src","images/"+images[(current)%images.length])
-                img2.style.display = "block";
-                img2.classList.add("LIn")
-                img2.addEventListener("animationend",finishIn)
-            
-            }
-        
-        </script>
+                  
+            </div>
+            <div style="width: 263px; height: 44px; margin: auto; ">
+                <button id = "a" onclick="swipeRight()" class = "button" style="float:left;">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
+                <button id = "b" onclick="swipeLeft()" class = "button"style="float:right;">  <img src="images/next.png" alt ="<-"/> </button>    
+            </div>
+            <p id = "input" style = "width:70%; margin:auto; text-align: center;">  </dp>
+        <script src = "stuff.js"></script>
     </div>
     </body>
 </html>
