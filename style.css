@@ -112,7 +112,6 @@
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 5px;
-    /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 3;
     clear:none;

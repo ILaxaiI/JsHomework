@@ -5,9 +5,6 @@ let img = document.getElementById("img1")
 let img2 = document.getElementById("img2")
 let block = false
 
-letinput = document.getElementById("input");
-
-
 function finish(){
     block = false
     img.classList.remove("ROut");
@@ -31,6 +28,7 @@ function oc(eve){
         eve.target.value = eve.target.initialValue
     }
 }
+
 let resspace = document.getElementById("result")
 function displayResult(){
     let args = []
@@ -44,16 +42,11 @@ function displayResult(){
     resspace.innerHTML = "Result: "+result;
 }
 
-function addEvents(obj){
-    obj.initialValue = obj.value
-    obj.addEventListener("click",clearSelf)
-    obj.addEventListener("blur",oc)
-   
-}
 for(o of images){
-    
     for (ele of o.html.getElementsByTagName("input")){
-    addEvents(ele);
+        obj.initialValue = obj.value
+        obj.addEventListener("click",clearSelf)
+        obj.addEventListener("blur",oc)
     }
 }
 
@@ -70,12 +63,10 @@ function swipeRight(){
     img.classList.add("ROut")
     img.addEventListener("animationend",finish)    
     img2.setAttribute("src","images/"+images[(current)%images.length].name)
-    
-
-    
     img2.style.display = "block";
     img2.classList.add("RIn")
 }
+
 function swipeLeft(){
     if (block) return;
     block = true
