@@ -6,13 +6,7 @@ let img2 = document.getElementById("img2")
 let block = false
 
 letinput = document.getElementById("input");
-input.innerHTML = images[current].html
 
-for(let inp of input.getElementsByClassName("input")){
-    console.log(inp)
-    console.log("adding event to",inp)
-    inp.addEventListener("click",clearSelf)
-}
 
 function finish(){
     block = false
@@ -27,27 +21,57 @@ function finish(){
 }
 
 function clearSelf(eve){
-    console.log(eve)
+    if(eve.target.value === eve.target.initialValue){
+      eve.target.value =""
+    }
 }
+
+function oc(eve){
+    if(eve.target.value === ""){
+        eve.target.value = eve.target.initialValue
+    }
+}
+let resspace = document.getElementById("result")
+function displayResult(){
+    let args = []
+    for (ele of images[current].html.getElementsByTagName("input")){
+        let val = parseFloat(ele.value)
+        if (!isNaN(val)){
+        args.push(val)
+       } else return;
+    }
+    let result = images[current].formula(args[0],args[1],args[2])
+    resspace.innerHTML = "Result: "+result;
+}
+
+function addEvents(obj){
+    obj.initialValue = obj.value
+    obj.addEventListener("click",clearSelf)
+    obj.addEventListener("blur",oc)
+   
+}
+for(o of images){
+    
+    for (ele of o.html.getElementsByTagName("input")){
+    addEvents(ele);
+    }
+}
+
+
 
 function swipeRight(){
     if (block) return; block = true;
+    images[current].html.style.display = "none"
+
     current = (current-1)%images.length;
     current = current < 0 ? images.length-1 : current;
-  
+    
+    images[current].html.style.display = ""
     img.classList.add("ROut")
     img.addEventListener("animationend",finish)    
     img2.setAttribute("src","images/"+images[(current)%images.length].name)
     
-    for(let inp of  input.getElementsByClassName("input")){
-        inp.removeEventListener("click",clearSelf)
-    }
-    
-    input.innerHTML = images[current].html || ""
-    
-    for(let inp of  input.getElementsByClassName("input")){
-        inp.addEventListener("click",clearSelf)
-    }
+
     
     img2.style.display = "block";
     img2.classList.add("RIn")
@@ -56,18 +80,11 @@ function swipeLeft(){
     if (block) return;
     block = true
   
+    images[current].html.style.display = "none"
     current = (current+1)%images.length
     current = current < 0 ? images.lenhth+1 : current;
   
-    for(let inp of  input.getElementsByClassName("input")){
-        inp.removeEventListener("click",clearSelf)
-    }
-    
-    input.innerHTML = images[current].html || ""
-    
-    for(let inp of  input.getElementsByClassName("input")){
-        inp.addEventListener("click",clearSelf)
-    }
+    images[current].html.style.display = ""
     
     img.classList.add("LOut")
     img.addEventListener("animationend",finish)

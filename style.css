@@ -89,5 +89,35 @@
 }
 
 .input{
-    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+    display:table;
 }
+
+.textfield{
+    text-align: center;
+    width: fit-content;
+    position: relative;
+    width: fit-content;
+  }
+.textfield .tooltip{
+    display:none;
+    width: 120px;   
+    bottom:30px;
+    left:10%;
+    background-color: rgb(218, 218, 218);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 5px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 3;
+    clear:none;
+  }
+.textfield:hover .tooltip{
+   display: block;
+
+  }

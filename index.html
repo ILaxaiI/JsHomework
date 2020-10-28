@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>test</title>
+        <title>Shape Calculator</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
-    <body>
-    <script src="volumes.js"></script>
-      <div id = "bkr" style = "margin:auto;width: 70%;"> 
+    <body style = "margin:auto;width: 70%; background-image:url('images/bckround.png');background-repeat: repeat;">
+      <div id = "bkr" > 
             <div id = "container" style="position: relative; border-width: 2px; border-style: solid; border-color: black; width: 263px;    margin:auto; overflow: hidden; height: 147px;">
 
                 <img id = "img1" class = "img" src="images/circle.png" style= "z-index: 1;"></img>
@@ -14,11 +13,99 @@
                  
                   
             </div>
-            <div style="width: 263px; height: 44px; margin: auto; ">
+            <div style="width: 263px; height: 44px; margin: auto; text-align: center; ">
                 <button id = "a" onclick="swipeRight()" class = "button" style="float:left;">  <img src="images/next.png" alt ="->" style = "transform: scaleX(-1);"/> </button>    
-                <button id = "b" onclick="swipeLeft()" class = "button"style="float:right;">  <img src="images/next.png" alt ="<-"/> </button>    
+                <button id = "b" onclick="swipeLeft()" class = "button"style="float:right;">  <img src="images/next.png" alt ="<-"/> </button>                
+                <button onclick = "displayResult()" style = "margin:auto; margin-top:10px;width:auto;clear:both; "> Calculate </button>
             </div>
-            <p id = "input" style = "width:70%; margin:auto; text-align: center;">  </dp>
+
+       
+              
+            
+           <div style = "position:relative; text-align: center;width:900px;margin:auto; display:table;">
+                <div id = "circle" class="input">
+                    <span class = "textfield">
+                         <input id='rad'  type = 'text' value = 'Radius' >  </input>
+                         <span class = "tooltip">The radius of the circle</span>   
+                   </span>
+                </div>
+                <div id = "sphere" class="input" style = "display:none;">  
+                    <span class = "textfield">  
+                        <input id ='rad' type = 'text' value = 'Radius'></input> 
+                        <span class = "tooltip">The radius of the sphere</span>   
+                    </span>
+                </div>
+                <div id = "cylinder" class="input" style = "display:none;">
+
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Radius' style = "margin-right: 50px;"></input>
+                        <span class = "tooltip">The radius of the cylinder</span>   
+                    </span>
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Height'></input>
+                        <span class = "tooltip">The height of the cylinder</span>   
+                    </span>
+                </div>
+                <div id = "rectangle" class="input" style = "display:none;">
+                    
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Width' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The width of the rectangle</span> 
+                    </span> 
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Height'></input>
+                        <span class = "tooltip">The height of the rectangle</span> 
+                    </span>
+                </div>
+                <div id = "cuboid" class="input"  style = "display:none;">
+                    
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Width' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The width of the cuboid</span>   
+                    </span>
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Height' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The height of the cuboid</span>   
+                    </span>
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Debth'></input>
+                        <span class = "tooltip">The debth of the cuboid</span>   
+                    </span>        
+                </div>
+                <div id = "trapezoid" class="input"  style = "display:none;">
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Base 1' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The 1st base of the trapezoid</span> 
+                    </span>
+                    <span class = "textfield">                     
+                        <input type = 'text' value = 'Base 2' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The 2nd base of the trapezoid</span> 
+                    </span>
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Height'></input>
+                        <span class = "tooltip">The height of the trapezoid</span>     
+                    </span>
+                </div>
+                <div id = "pyramid" class=" input"  style = " display:none;">
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Width' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The width of the base of the pyramid</span>     
+                    </span>
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Debth' style = 'margin-right:50px;'></input>
+                        <span class = "tooltip">The debth of the base of the pyramid</span>     
+                    </span>
+                    <span class = "textfield">  
+                        <input type = 'text' value = 'Height'></input>
+                        <span class = "tooltip">The height of the pyramid</span>    
+                    </span>
+                </div>
+            </div>
+
+            <div id="result" style="text-align:center;">
+                Result:
+             </div>
+        <script src="volumes.js"></script>
         <script src = "stuff.js"></script>
     </div>
     </body>
