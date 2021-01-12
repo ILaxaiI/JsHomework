@@ -167,10 +167,10 @@ while 1:
     ## please comment the two lines of code above (resultingFreq =..., buzz...) out
     #result = AD1Bit(currentValue)
     #result = AD2Bit(currentValue)
-    #result = ADnBit(currentValue, bits)
+    result = ADnBit(currentValue, bits)
     
     ## When invoking the A/D conversion you may uncomment this print call
-    #print("Mapping {} to {} by using {}-bit A/D conversion.".format(currentValue, result, len(result)))    
+    print("Mapping {} to {} by using {}-bit A/D conversion.".format(currentValue, result, len(result)))    
     
     ## in case we use time discrete mode, we use the sampling frequency defined above
     if mode == "timeDisc":
