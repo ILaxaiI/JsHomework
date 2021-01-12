@@ -109,7 +109,7 @@ def ADnBit(value, bit):
         return
     
     decRes = math.floor(value/5.2*(2**bit-1))
-    resutl = decToBin(decRes,bit)
+    result = decToBin(decRes,bit)
 
     
     toggleLED(result)
@@ -139,8 +139,10 @@ def toggleBuzz(quantValue):
     
 
 ## Here we set the explorer hat buttons to select who many bits our A/D converter should employ
-def evaluateButtons(channel, event):    
+def evaluateButtons(channel, event):
     global bits
+    if event =="press" and channel <5:
+        bits = channel
     # ...
 
 ## We register the handler evaluteButtons for button press events
