@@ -1,7 +1,7 @@
 import time
 import explorerhat
 import RPi.GPIO as GPIO
-
+import math
 ## These lines configure the PWM pin for pulse width modulation
 ## You don't need to make any changes to these lines
 GPIO.setmode(GPIO.BCM)
@@ -108,7 +108,7 @@ def ADnBit(value, bit):
         print("Invalid number of bits")
         return
     
-    decRes = Math.floor(a/5.2*(2**bit-1))
+    decRes = math.floor(a/5.2*(2**bit-1))
     resutl = decToBin(decRes,bit)
 
     
