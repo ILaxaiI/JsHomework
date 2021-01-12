@@ -75,8 +75,8 @@ def mapValue(value):
 ## it should return either a [0] or [1]
 def AD1Bit(value):
     result = [0]
-    # ...
-    
+    if value > 5.2/2:
+        result[0] = 1
     toggleLED(result)
     toggleBuzz(result)
     return result
@@ -87,8 +87,16 @@ def AD1Bit(value):
 ## the 2 Bit A/D converter
 def AD2Bit(value):
     result = [0, 0]
-    #...
-    
+
+    if value > 3.9:
+       result[0] = 1
+       result[1] = 1
+    elif value > 2.6:
+        result[1] = 1
+    elif value > 1.3:
+        result[0] = 1
+        
+
     toggleLED(result)
     toggleBuzz(result)
     return result
@@ -99,10 +107,10 @@ def ADnBit(value, bit):
     if bit > 4 or bit < 1:
         print("Invalid number of bits")
         return
-    result = [0] * bit
     
-    #...
-       
+    decRes = Math.floor(a/5.2*(2**bit-1))
+    resutl = decToBin(decRes,bit)
+
     
     toggleLED(result)
     toggleBuzz(result)
