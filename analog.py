@@ -108,7 +108,7 @@ def ADnBit(value, bit):
         print("Invalid number of bits")
         return
     
-    decRes = math.floor(a/5.2*(2**bit-1))
+    decRes = math.floor(value/5.2*(2**bit-1))
     resutl = decToBin(decRes,bit)
 
     
