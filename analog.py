@@ -92,9 +92,9 @@ def AD2Bit(value):
        result[0] = 1
        result[1] = 1
     elif value > 2.6:
-        result[1] = 1
-    elif value > 1.3:
         result[0] = 1
+    elif value > 1.3:
+        result[1] = 1
         
 
     toggleLED(result)
@@ -122,9 +122,12 @@ def ADnBit(value, bit):
 def toggleLED(quantValue):
     if len(quantValue) > 4:
         print("You try to address too many LEDs")
-    #...
-
-
+    for lamp in range(0,len(quantValue)):
+        if quantValue[lamp]:
+            explorerhat.output[lamp].on()
+        else:
+            explorerhat.output[lamp].off()
+        
 
 ## toggleBuzz invokes the buzzer with a frequency corresponding to the quantized value
 def toggleBuzz(quantValue):
