@@ -122,7 +122,7 @@ def ADnBit(value, bit):
 def toggleLED(quantValue):
     if len(quantValue) > 4:
         print("You try to address too many LEDs")
-    for lamp in range(0,len(quantValue)):
+    for lamp in range(0,3):
         if quantValue[lamp]:
             explorerhat.output[lamp].on()
         else:
